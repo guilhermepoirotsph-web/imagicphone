@@ -38,7 +38,7 @@ const ALINHAMENTO = { esquerda: "text-left", direita: "text-right", centro: "tex
 
 export default function Tabela<T>({ colunas, linhas, chaveLinha, vazio = "Nada por aqui ainda.", legenda, classeLinha, className = "" }: Props<T>) {
   return (
-    <div className={`w-full max-w-full overflow-x-auto overscroll-x-contain ${className}`} role="region" aria-label={legenda} tabIndex={0}>
+    <div className={`relative w-full max-w-full overflow-x-auto overscroll-x-contain ${className}`} role="region" aria-label={legenda} tabIndex={0}>
       <table className="w-full min-w-[36rem] border-collapse text-sm">
         {legenda && <caption className="sr-only">{legenda}</caption>}
         <thead>

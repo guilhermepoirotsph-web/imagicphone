@@ -1,5 +1,5 @@
 /** Vitrine — banners, avisos da barra superior e slogan do herói. Tudo reflete na loja na hora. */
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Pagina from "@/painel/componentes/Pagina";
 import Cartao from "@/painel/componentes/Cartao";
 import Modal from "@/painel/componentes/Modal";
@@ -12,7 +12,9 @@ import type { Banner } from "@/dados/tipos";
 const NOVO: Banner = { id: "", rotulo: "", titulo: "", subtitulo: "", cta: "Ver", link: "/produtos", ativo: true, ordem: 99 };
 
 export default function PainelVitrine() {
-  const banners = useLoja((s) => [...s.banners].sort((a, b) => a.ordem - b.ordem));
+  // seletor devolve a referência da store; ordenar aqui (array novo no seletor = loop infinito no zustand 5)
+  const bannersBrutos = useLoja((s) => s.banners);
+  const banners = useMemo(() => [...bannersBrutos].sort((a, b) => a.ordem - b.ordem), [bannersBrutos]);
   const config = useLoja((s) => s.config);
   const salvarBanner = useLoja((s) => s.salvarBanner);
   const removerBanner = useLoja((s) => s.removerBanner);
