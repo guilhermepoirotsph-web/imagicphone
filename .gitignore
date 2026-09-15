@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+*.local
+_capturas/
+_auditoria/
+.DS_Store
+Thumbs.db
