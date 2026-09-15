@@ -68,7 +68,7 @@ const csp = [
   "frame-src https://www.instagram.com https://instagram.com https://www.google.com",
   "worker-src 'self' blob:",
   "object-src 'none'", "base-uri 'self'", "form-action 'self'", "frame-ancestors 'none'",
-  'upgrade-insecure-requests',
+  // 'upgrade-insecure-requests' fica de fora: o navegador IGNORA e avisa no console quando a CSP é Report-Only
 ].join('; ');
 writeFileSync(join(DIST, '_headers'), [
   '/*',
